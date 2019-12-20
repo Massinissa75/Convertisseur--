@@ -29,34 +29,88 @@ import Foundation
   
   
   class Convert {
+    var firstAmountToConvert = 0.0
     private static let apiUrlString = "http://data.fixer.io/api/latest"
     let apiKey = "?access_key=34f12e438657827416158c23365fb332"
     let apiUrl = URL(string: apiUrlString)
     private var task: URLSessionDataTask?
-    var domain: String?
+
+func getConvert(callback: @escaping (Bool, Services?) -> Void) {
+    let completUrl = "\(apiUrl!)\(apiKey)&base=EUR&symbols=USD"
+    let request = URLRequest(url: URL(string: completUrl)!)
+    let session = URLSession(configuration: .default)
+    task?.cancel()
+    task = session.dataTask(with: request) { (data, response, error) in
+      DispatchQueue.main.async {
+        guard let data = data, error == nil else {
+          return callback(false, nil)
+        }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+          return callback(false, nil)
+        }
+       do {
+         let change = try? JSONDecoder().decode(Services?.self, from: data)
+                 callback(true, change)
+    // } catch {
+    //   callback(false, nil)
+       }
+    }
+  }
+      self.task?.resume()
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-    func getConvert(callback: @escaping (Bool, Services?) -> Void) {
+   /* func getConvert(callback: @escaping (Bool, Rates) -> Void) {
       let completUrl = "\(apiUrl!)\(apiKey)"
       let request = URLRequest(url: URL(string: completUrl)!)
       let session = URLSession(configuration: .default)
       task?.cancel()
       task = session.dataTask(with: request) { (data, response, error) in
         DispatchQueue.main.async {
-          guard let data = data, error == nil else {
-            return callback(false, nil)
-        
-          }
-          guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            return callback(false, nil)
-          }
-          do {
-              let change = try? JSONDecoder().decode(Services.self, from: data)
-              callback(true, change)
-         // } catch {
-           //   callback(false, nil)
+       /* print(response as Any)
+          if let data = data, error == nil {
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 200  {
+            }
           }
         }
       }
       task?.resume()
-  }
-}
+    }*/
+          
+        
+          }
+          guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            return callback(false, nil)
+
+          }
+          print(response)
+
+          
+          do {
+              let change = try? JSONDecoder().decode(Rates.self, from: data)
+            callback(true, change)
+            print(response)
+          } catch {
+              callback(false, nil)
+          }
+        }
+       self.task?.resume()
+      
+    }*/
+

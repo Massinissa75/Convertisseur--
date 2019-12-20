@@ -21,29 +21,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="€" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LTy-oh-U5b">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="€" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LTy-oh-U5b">
                                 <rect key="frame" x="45" y="394" width="269" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="vHQ-wX-lZG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-RS-u1p">
-                                <rect key="frame" x="140" y="465" width="140" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="uSt-n2-AHz"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-RS-u1p">
+                                <rect key="frame" x="140" y="465" width="140" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="25"/>
                                 <state key="normal" title="Convert to $">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OSt-xY-Eg7"/>
+                                    <action selector="didTapCovertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lt-5o-fHY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLo-OA-vJs">
-                                <rect key="frame" x="45" y="542" width="269" height="40"/>
+                                <rect key="frame" x="45" y="602" width="269" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HRT-DD-uCU"/>
@@ -51,23 +49,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="4" height="-1"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.81067576142131981" green="0.81067576142131981" blue="0.81067576142131981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dLo-OA-vJs" secondAttribute="bottom" constant="280" id="PTr-7i-m1X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dLo-OA-vJs" secondAttribute="bottom" constant="220" id="PTr-7i-m1X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LTy-oh-U5b" secondAttribute="trailing" constant="100" id="TQE-ez-iOA"/>
-                            <constraint firstItem="a8m-RS-u1p" firstAttribute="top" secondItem="XiH-IH-dD6" secondAttribute="bottom" constant="326" id="TXV-sP-G9D"/>
                             <constraint firstItem="LTy-oh-U5b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="U2W-Fb-GH7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XiH-IH-dD6" secondAttribute="trailing" constant="100" id="X8j-J1-ycC"/>
                             <constraint firstItem="dLo-OA-vJs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="e9M-9s-0Z1"/>
                             <constraint firstItem="LTy-oh-U5b" firstAttribute="top" secondItem="XiH-IH-dD6" secondAttribute="bottom" constant="255" id="fy4-f6-2HJ"/>
-                            <constraint firstItem="a8m-RS-u1p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="i8a-qi-LZ6"/>
                             <constraint firstItem="XiH-IH-dD6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="iVc-5e-swd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dLo-OA-vJs" secondAttribute="trailing" constant="100" id="sOn-Qm-DV2"/>
                             <constraint firstItem="XiH-IH-dD6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="zxv-FB-Ynk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QoX-cJ-8Ly" appends="YES" id="Yl8-Qc-WAl"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="ui_labelResult" destination="dLo-OA-vJs" id="or0-Wg-uXv"/>
@@ -75,6 +76,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QoX-cJ-8Ly">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="NXj-7M-yLC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>

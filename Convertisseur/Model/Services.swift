@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Services: Decodable {
+/*struct Services: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case rates = "rates"
@@ -26,4 +26,32 @@ struct Services: Decodable {
         }
         return dateFormatted
     }
+}*/
+
+/*struct Rates: Decodable {
+  //var money = ""
+  var usd: Double?
 }
+struct DollarRate {
+    static var rate: Double?
+    static var error: String?
+}*/
+
+//   let services = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+struct Services: Decodable {
+    let success: Bool
+    let timestamp: Int
+    let base, date: String
+    let rates: Rates?
+}
+
+struct Rates: Decodable {
+    let USD: Double?
+}
+
+struct DollarRate {
+    static var rate: Double?
+    static var error: String?
+}
+
+
